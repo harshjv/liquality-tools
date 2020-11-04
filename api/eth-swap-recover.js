@@ -14,7 +14,7 @@ const eth = ClientFactory.create('mainnet', 'eth', { mnemonic: 'xxx' })
 const buildHtml = link => `<!DOCTYPE html>
 <html lang="auto">
 <body>
-<p>Link: <a href="${link}" rel="noopener">${link}</a<</p>
+<p>Link: <a href="${link}" rel="noopener">${link}</a></p>
 </body>
 </html>`
 
