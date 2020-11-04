@@ -11,7 +11,7 @@ const refundAddressRe = /ff5b73(.*)ff$/i
 
 const eth = ClientFactory.create('mainnet', 'eth', { mnemonic: 'xxx' })
 
-const buildHtmlRedirect = (timeout, link) => `<!DOCTYPE html>
+const buildHtmlRedirect = (link, timeout = 3) => `<!DOCTYPE html>
 <html lang="auto">
 <head>
 <meta http-equiv="refresh" content="${timeout};url=${link}" />
@@ -49,12 +49,14 @@ const getParams = async aFundHash => {
   }
 }
 
+const getSwapLink = params => 'https://liquality.io/swap/#' + qs.stringify(params)
+
 module.exports = async (req, res) => {
   const { aFundHash } = req.query
 
   try {
     const urlParams = await getParams(aFundHash)
-    res.send(buildHtmlRedirect(3, 'https://liquality.io/swap/#' + qs.stringify(urlParams)))
+    res.send(buildHtmlRedirect(getSwapLink(urlParams)))
   } catch (e) {
     res.status(400)
     res.send(e.toString())
