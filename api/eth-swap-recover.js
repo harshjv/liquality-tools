@@ -11,13 +11,12 @@ const refundAddressRe = /ff5b73(.*)ff$/i
 
 const eth = ClientFactory.create('mainnet', 'eth', { mnemonic: 'xxx' })
 
-const buildHtmlRedirect = (link, timeout = 3) => `<!DOCTYPE html>
+const buildHtml = link => `<!DOCTYPE html>
 <html lang="auto">
 <head>
-<meta http-equiv="refresh" content="${timeout};url=${link}" />
 </head>
 <body>
-<p>Redirecting you to <a href="${link}" rel="noopener">${link}</a<</p>
+<p>Link: <a href="${link}" rel="noopener">${link}</a<</p>
 </body>
 </html>`
 
@@ -56,7 +55,7 @@ module.exports = async (req, res) => {
 
   try {
     const urlParams = await getParams(aFundHash)
-    res.send(buildHtmlRedirect(getSwapLink(urlParams)))
+    res.send(buildHtml(getSwapLink(urlParams)))
   } catch (e) {
     res.status(400)
     res.send(e.toString())
