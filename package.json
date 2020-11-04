@@ -1,0 +1,16 @@
+{
+  "name": "liquality-tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Harsh Vakharia <harshjv@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@liquality/client-factory": "^0.7.9",
+    "bignumber.js": "^9.0.1",
+    "qs": "^6.9.4"
+  }
+}
